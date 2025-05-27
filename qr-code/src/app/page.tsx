@@ -2,6 +2,10 @@
 import { QRCodeCanvas, QRCodeSVG } from 'qrcode.react';
 import { FaUpload} from 'react-icons/fa';
 
+
+
+
+
 export default function Home() {
   return (
     <main className="container">

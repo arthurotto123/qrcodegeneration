@@ -3,6 +3,7 @@ import { Poppins, Geist_Mono} from "next/font/google";
 import './styles.css';
 
 
+
 const poppings = Poppins({
   weight: ["400", "500","600","700"],
   subsets: ["latin"],
