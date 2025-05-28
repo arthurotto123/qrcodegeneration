@@ -1,12 +1,55 @@
 "use client";
 import { QRCodeCanvas, QRCodeSVG } from 'qrcode.react';
 import { FaUpload } from 'react-icons/fa';
+import { useRef, useState } from 'react';
+
 
 
 
 
 
 export default function Home() {
+
+  const [linkValue, setLinkValue] = useState<string>('');
+  const [fgColor, setfgcolor] = useState<string>('#000000');
+  const [bgColor, setbgcolor] = useState<string>('#ffffff');
+  const [logourl, setlogourl] = useState<string>("");
+  const [logosize, setlogosize] = useState<number>(24);
+  const qrCodeRef = useRef<HTMLDivElement>(null);
+
+  const handlelogochange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        if (reader.result) {
+          setlogourl(reader.result as string);
+        }
+
+        
+      }
+        reader.readAsDataURL(file);
+    }
+  }
+
+  const handleDownLoad = () => {
+    if (!qrCodeRef.current) return;
+
+    const canvas = qrCodeRef.current.querySelector("canvas");
+
+    if (!canvas) return;
+
+
+    const link = document.createElement("a");
+
+    link.href = canvas.toDataURL("image/png");
+    link.download = "qr-code.png";
+    link.click();
+
+  }
+
   return (
     <main className="container">
       <section className="title-container">
@@ -27,7 +70,9 @@ export default function Home() {
           </div>
           <input type="text"
             id="link"
-            placeholder="Seu link aqui" />
+            placeholder="Seu link aqui"
+            value={linkValue}
+            onChange={(e) => setLinkValue(e.target.value)} />
 
       
 
@@ -36,22 +81,26 @@ export default function Home() {
             QR CODE PREVIEW
           </p>
 
-          <QRCodeCanvas
-            value={"https://picturesofpeoplescanningqrcodes.tumblr.com/"}
-            title={"Title for my QR Code"}
+         <div ref={qrCodeRef}>
+
+           <QRCodeCanvas
+            value={linkValue}
+            title={linkValue}
             size={128}
-            bgColor={"#ffffff"}
-            fgColor={"#000000"}
+            bgColor={bgColor}
+            fgColor={fgColor}
             level={"L"}
             imageSettings={{
-              src: "https://static.zpao.com/favicon.png",
+              src: logourl,
               x: undefined,
               y: undefined,
-              height: 24,
-              width: 24,
+              height: logosize,
+              width: logosize,
               opacity: 1,
               excavate: true,
             }} />
+
+         </div>
         </div>
 
         </div>
@@ -69,7 +118,10 @@ export default function Home() {
                 </label>
                 <input type="color"
                   className='input-color'
-                  id='fgColor' />
+                  id='fgColor'
+                  value={fgColor}
+                  onChange={(e) => setfgcolor(e.target.value)} />
+                  
               </div>
 
               <div className="input-box">
@@ -78,7 +130,9 @@ export default function Home() {
                 </label>
                 <input type="color"
                   className='input-color'
-                  id='fgColor' />
+                  id='bgColor' 
+                  value={bgColor}
+                  onChange={(e) => setbgcolor(e.target.value)}/>
               </div>
 
 
@@ -96,7 +150,8 @@ export default function Home() {
                 <input type="file"
                   className='input-file'
                   id='logo'
-                  accept='image/*' />
+                  accept='image/*' 
+                  onChange={handlelogochange}/>
               </div>
 
               <button className='input-file-button'>
@@ -108,7 +163,10 @@ export default function Home() {
                 <label htmlFor="logoSize">
                   Tamanho da logo
                 </label>
-                <select name="logoSize" id="logoSize">
+                <select name="logoSize" id="logoSize"
+                value={logosize}
+                onChange={(e) => setlogosize(Number(e.target.value
+                ))}>
 
                   <option value="24"> 24px x 24px</option>
                   <option value="38"> 38px x 38px</option>
@@ -121,7 +179,7 @@ export default function Home() {
 
           </div>
 
-          <button className="download-button">
+          <button className="download-button" onClick={handleDownLoad}>
             Baixar QR Code
           </button>
 

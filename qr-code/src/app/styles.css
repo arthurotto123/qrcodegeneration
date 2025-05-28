@@ -11,7 +11,7 @@
   justify-content: center;
   flex-direction: column;
   min-height: 100vh;
-  background: linear-gradient(180deg, #dbeafe, #add0ff);
+  background: linear-gradient(100deg , #000000, #555555, #AAAAAA, #FFFFFF);
   gap: 32px;
 
 
@@ -166,6 +166,11 @@
   cursor: pointer;
   font-size: 14px;
   width: fit-content;
+  transition: backgrount-color 0.3s ease;   
+
+  &:hover {
+    opacity: 0.8;
+  }
 
 }
 
@@ -174,4 +179,48 @@
   border: 1px solid #e2e8f0;
   border: none;
   border-radius: 12px;
+}
+
+.download-button {
+  background-color: #4f46e5;
+  color: #ffff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 40px;
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+@media screen and (max-width: 910px) {
+  .container {
+    padding: 32px 5%;
+    gap: 16px;
+
+  }
+  .arrow-detail {
+    display: none;
+  }
+
+  .qr-code {
+    width: 100%;
+  }
+
+  .qr-code-customization {
+    width: 100%;
+    gap: 12px;
+
+  }
+
+  .qr-code-container{
+    flex-direction: column;
+    width: 100%;
+      }
 }
