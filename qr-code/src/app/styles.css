@@ -12,4 +12,166 @@
   flex-direction: column;
   min-height: 100vh;
   background: linear-gradient(180deg, #dbeafe, #add0ff);
+  gap: 32px;
+
+
+} 
+
+.title-container {
+  position: relative;
+}
+
+.page-title {
+  font-weight: 600;
+  text-align: center;
+  font-size: 32px;
+    
+    
+}
+
+.page-title span {
+   color: #22579c;
+}
+
+.arrow-detail {
+  position: absolute;
+  right: -90%;
+  height: 130px;
+  transform: rotate(-10deg);
+}
+
+.qr-code-container {
+  background-color: #f8fafc;
+  padding: 12px;
+  border-radius: 12px;
+  display:  flex;
+  gap: 12px;
+  width: 900px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.5) ;
+}
+
+.qr-code, .qr-code-customization {
+  background-color:  #ffffff;
+  padding: 18px;
+  border-radius: 12px;
+  width: 50%;
+}
+
+.qr-code {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+
+  
+}
+
+.link-input {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+
+.link-input label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.qr-code input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+
+  &:focus {
+    outline: 1px solid #22579c;
+  }
+}
+
+.qr-code-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+
+.qr-code-costumization {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.customization-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+
+.input-container .colors {
+  flex-direction: row;
+}
+
+
+.input-color {
+  border: none;
+  background-color: transparent;
+  height: 30px;
+  width: 60%;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-left:  10px;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+}
+
+.input-box label {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.input-file{
+  opacity: 0;
+  position: absolute;
+  z-index: 2;
+  height: 60px;
+  cursor: pointer;
+}
+
+.input-file-button {
+  position: relative;
+  z-index: 1;
+  background-color: #4f46e5;
+  border: none;
+  padding: 8px 12px;
+  color: #fff;
+  border-radius: 12px;
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  width: fit-content;
+
+}
+
+#logoSixe {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border: none;
+  border-radius: 12px;
 }
