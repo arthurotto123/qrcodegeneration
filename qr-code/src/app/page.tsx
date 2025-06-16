@@ -184,9 +184,11 @@ export default function Home() {
           </button>
 
         </div>
-
+       
 
       </section>
+       <p>&copy; @arthurotto123 2025</p>
+
     </main>
   );
 }
